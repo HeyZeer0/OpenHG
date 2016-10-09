@@ -1,6 +1,7 @@
 package net.heyzeer0.openhg.manager;
 
 import net.heyzeer0.openhg.Main;
+import net.heyzeer0.openhg.api.KitManager;
 import net.heyzeer0.openhg.api.eventos.InvencibilityFinishEvent;
 import net.heyzeer0.openhg.api.eventos.PreStartEvent;
 import net.heyzeer0.openhg.api.eventos.StartEvent;
@@ -33,6 +34,7 @@ public class GameManager {
         p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, Integer.MAX_VALUE));
         p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, -Integer.MAX_VALUE, Integer.MAX_VALUE));
         p.teleport(GeneralUtil.toLocation(p.getWorld(), 0, p.getWorld().getHighestBlockYAt(0, 0), 0));
+        KitManager.giveKitItems(p);
     }
 
     public static void startgame() {

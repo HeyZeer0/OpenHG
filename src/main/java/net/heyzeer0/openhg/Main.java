@@ -32,7 +32,7 @@ public class Main extends JavaPlugin {
     public static int min_players = 5;
 
     //strings
-    public static String prefixo = ChatColor.DARK_GRAY + "( " + ChatColor.GREEN + " ! " + ChatColor.DARK_GRAY + " )" + ChatColor.GRAY;
+    public static String prefixo = ChatColor.DARK_GRAY + "( " + ChatColor.GREEN + " ! " + ChatColor.DARK_GRAY + " ) " + ChatColor.GRAY;
     public static String prefix_nome = "" + ChatColor.GREEN + ChatColor.BOLD + "Open" + ChatColor.GRAY + ChatColor.BOLD + "HG";
     public static String ip = "hg.openhg.com.br";
     public static String chatformat = "$6$l>";

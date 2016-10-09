@@ -1,5 +1,7 @@
 package net.heyzeer0.openhg.api;
 
+import net.heyzeer0.openhg.Main;
+import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.utils.ItemUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -32,6 +34,18 @@ public class KitManager {
         }else{
             kits.put(p.getUniqueId(), kit);
         }
+
+        if(Main.estagio_atual == Estagio.EMJOGO) {
+            if(p.hasPermission("openhg.kitlater")) {
+                if(Main.countdown_jogo <= 300) {
+                    giveKitItems(p);
+                }else{
+                    p.sendMessage(Main.prefixo + "O tempo para escolher kit já esgotou.");
+                }
+            }else{
+                p.sendMessage(Main.prefixo + "Você não pode escolher kit após o inicio da partida.");
+            }
+        }
     }
 
     public static void removeKit(Player p) {
@@ -47,6 +61,19 @@ public class KitManager {
                 Bukkit.getPlayer(u).getInventory().addItem(i);
             }
 
+        }
+    }
+
+    public static void giveKitItems(Player p) {
+        if(p.getInventory().contains(ItemUtil.customItem(Material.COMPASS, "$4Bússola", Arrays.asList("Clique para procurar jogadores")))) {
+            p.getInventory().remove(ItemUtil.customItem(Material.COMPASS, "$4Bússola", Arrays.asList("Clique para procurar jogadores")));
+        }
+
+        p.getInventory().clear();
+        p.getInventory().addItem(ItemUtil.customItem(Material.COMPASS, "$4Bússola", Arrays.asList("Clique para procurar jogadores")));
+
+        for(ItemStack i : kititems.get(kits.get(p.getUniqueId()))) {
+            p.getInventory().addItem(i);
         }
     }
 
