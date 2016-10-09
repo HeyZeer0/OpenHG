@@ -3,6 +3,7 @@ package net.heyzeer0.openhg;
 import com.sun.webkit.plugin.PluginManager;
 import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.eventos.InteractEvent;
+import net.heyzeer0.openhg.eventos.ItemEvent;
 import net.heyzeer0.openhg.eventos.JoinEvent;
 import net.heyzeer0.openhg.manager.ScoreboardManager;
 import net.heyzeer0.openhg.timer.PreJogo;
@@ -58,6 +59,7 @@ public class Main extends JavaPlugin {
     public void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new JoinEvent(), this);
         Bukkit.getPluginManager().registerEvents(new InteractEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new ItemEvent(), this);
     }
 
     public static Main getPlugin() {
