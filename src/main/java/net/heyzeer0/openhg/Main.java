@@ -26,6 +26,7 @@ public class Main extends JavaPlugin {
     //contagens
     public static int countdown_prejogo = 60*5;
     public static int countdown_jogo = 0;
+    public static int countdown_invencibilidade = 60*2 + 1;
 
     //valores
     public static int min_players = 5;

@@ -1,10 +1,12 @@
 package net.heyzeer0.openhg.manager;
 
 import net.heyzeer0.openhg.Main;
+import net.heyzeer0.openhg.api.eventos.InvencibilityFinishEvent;
 import net.heyzeer0.openhg.api.eventos.PreStartEvent;
 import net.heyzeer0.openhg.api.eventos.StartEvent;
 import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.timer.EmJogo;
+import net.heyzeer0.openhg.timer.Invencibilidade;
 import net.heyzeer0.openhg.utils.GeneralUtil;
 import net.heyzeer0.openhg.utils.StringUtil;
 import org.bukkit.Bukkit;
@@ -45,8 +47,16 @@ public class GameManager {
         Bukkit.broadcastMessage(" ");
 
         Bukkit.getPluginManager().callEvent(new StartEvent());
-        Main.estagio_atual = Estagio.EMJOGO;
+        Main.estagio_atual = Estagio.INVECIBILIDADE;
+        Invencibilidade.startCountdown();
+        DamageManager.setDamage(false);
+    }
+
+    public static void finishInvencibilidade() {
+        DamageManager.setDamage(true);
+        ChatManager.setChat(true);
         EmJogo.startCountdown();
+        Bukkit.getPluginManager().callEvent(new InvencibilityFinishEvent());
     }
 
 }

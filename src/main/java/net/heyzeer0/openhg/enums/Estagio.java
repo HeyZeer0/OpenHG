@@ -5,6 +5,6 @@ package net.heyzeer0.openhg.enums;
  */
 public enum Estagio {
 
-    AGUARDANDO, PREJOGO, EMJOGO, VITORIA;
+    AGUARDANDO, PREJOGO, INVECIBILIDADE, EMJOGO, VITORIA;
 
 }

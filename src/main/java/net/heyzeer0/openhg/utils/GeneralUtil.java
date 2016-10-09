@@ -1,6 +1,7 @@
 package net.heyzeer0.openhg.utils;
 
 import net.heyzeer0.openhg.Main;
+import net.heyzeer0.openhg.enums.Estagio;
 import org.bukkit.Location;
 import org.bukkit.World;
 
@@ -11,32 +12,12 @@ import java.io.File;
  */
 public class GeneralUtil {
 
-    public static void deleteDir(File dir) {
-        if(dir.isDirectory()) {
-            String[] arq = dir.list();
-            //pode ser que aqui em baixo não seja necessário, mais só pra garantir xd
-            for(int i = 0; i < arq.length; i++) {
-                deleteDir(new File(dir, arq[i]));
-            }
-            dir.delete();
-        }
-    }
-
-    public static void deleteWorld(String world) {
-        File f = new File(File.separator + world);
-        for(File a : f.listFiles()) {
-            if(a.isDirectory()) {
-                for(File b : a.listFiles()) {
-                    b.delete();
-                }
-            }else{
-                a.delete();
-            }
-        }
-    }
-
     public static Location toLocation(World w, float x, float y, float z) {
         return new Location(w, x, y, z);
+    }
+
+    public static Estagio getEstagio() {
+        return Main.estagio_atual;
     }
 
 }
