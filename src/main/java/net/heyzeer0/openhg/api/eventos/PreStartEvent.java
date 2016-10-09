@@ -1,4 +1,4 @@
-package net.heyzeer0.openhg.api;
+package net.heyzeer0.openhg.api.eventos;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

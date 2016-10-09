@@ -1,7 +1,7 @@
 package net.heyzeer0.openhg.manager;
 
-import net.heyzeer0.openhg.api.PlayerEnterTournamentEvent;
-import net.heyzeer0.openhg.api.PlayerLeaveTournamentEvent;
+import net.heyzeer0.openhg.api.eventos.PlayerEnterTournamentEvent;
+import net.heyzeer0.openhg.api.eventos.PlayerLeaveTournamentEvent;
 import net.heyzeer0.openhg.utils.StringUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

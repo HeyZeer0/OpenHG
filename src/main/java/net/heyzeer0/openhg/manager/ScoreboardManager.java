@@ -1,6 +1,7 @@
 package net.heyzeer0.openhg.manager;
 
 import net.heyzeer0.openhg.Main;
+import net.heyzeer0.openhg.api.KitManager;
 import net.heyzeer0.openhg.utils.ScoreboardUtil;
 import net.heyzeer0.openhg.utils.StringUtil;
 import org.bukkit.ChatColor;
@@ -20,7 +21,7 @@ public class ScoreboardManager {
         a.add(ChatColor.GREEN +  "Iniciando em " + ChatColor.GRAY + StringUtil.relogio(Main.countdown_prejogo));
         a.add(ChatColor.GREEN +  "Jogadores " + ChatColor.GRAY + PlayerManager.playerCount());
         a.blankLine();
-        a.add(ChatColor.GREEN +  "Kit " + ChatColor.GRAY + "Nenhum");
+        a.add(ChatColor.GREEN +  "Kit " + ChatColor.GRAY + KitManager.getKit(p));
         a.blankLine();
 
         a.build();

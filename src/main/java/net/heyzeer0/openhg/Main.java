@@ -1,6 +1,7 @@
 package net.heyzeer0.openhg;
 
 import com.sun.webkit.plugin.PluginManager;
+import net.heyzeer0.openhg.api.eventos.OpenHGStartEvent;
 import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.eventos.*;
 import net.heyzeer0.openhg.manager.ScoreboardManager;
@@ -50,6 +51,8 @@ public class Main extends JavaPlugin {
         WorldBorder b = Bukkit.getWorld("world").getWorldBorder();
         b.setSize(1000);
         b.setCenter(0, 0);
+
+        Bukkit.getPluginManager().callEvent(new OpenHGStartEvent());
     }
 
     public void onDisable() {

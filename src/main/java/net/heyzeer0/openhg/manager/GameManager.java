@@ -1,8 +1,8 @@
 package net.heyzeer0.openhg.manager;
 
 import net.heyzeer0.openhg.Main;
-import net.heyzeer0.openhg.api.PreStartEvent;
-import net.heyzeer0.openhg.api.StartEvent;
+import net.heyzeer0.openhg.api.eventos.PreStartEvent;
+import net.heyzeer0.openhg.api.eventos.StartEvent;
 import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.timer.EmJogo;
 import net.heyzeer0.openhg.utils.GeneralUtil;

@@ -1,4 +1,4 @@
-package net.heyzeer0.openhg.api;
+package net.heyzeer0.openhg.api.eventos;
 
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.enums.Estagio;
@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Created by HeyZeer0 on 09/10/2016.
  */
-public class PlayerEnterTournamentEvent extends Event {
+public class PlayerLeaveTournamentEvent extends Event {
 
 
     private static final HandlerList handlers = new HandlerList();
@@ -25,7 +25,7 @@ public class PlayerEnterTournamentEvent extends Event {
 
     Player pl;
 
-    public PlayerEnterTournamentEvent(Player p) {
+    public PlayerLeaveTournamentEvent(Player p) {
         pl = p;
     }
 
@@ -37,4 +37,4 @@ public class PlayerEnterTournamentEvent extends Event {
         return Main.estagio_atual;
     }
 
- }
+}
