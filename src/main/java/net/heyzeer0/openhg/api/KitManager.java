@@ -18,7 +18,7 @@ import java.util.UUID;
 public class KitManager {
 
     private static HashMap<UUID, String> kits = new HashMap<UUID, String>();
-    private static HashMap<String, ItemStack[]> kititems = new HashMap<String, ItemStack[]>();
+    public static HashMap<String, ItemStack[]> kititems = new HashMap<String, ItemStack[]>();
 
     public static String getKit(Player p) {
         if(kits.containsKey(p.getUniqueId())) {

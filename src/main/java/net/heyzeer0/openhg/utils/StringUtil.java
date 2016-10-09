@@ -26,5 +26,13 @@ public class StringUtil {
         return a + ":" + b;
     }
 
+    public static String upperCase(String i) {
+        return Character.toString(i.charAt(0)).toUpperCase()+i.substring(1);
+    }
+
+    public static Integer stringToInt(String i) {
+        return Integer.valueOf(i);
+    }
+
 
 }

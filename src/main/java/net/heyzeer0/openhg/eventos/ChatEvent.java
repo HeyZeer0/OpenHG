@@ -15,9 +15,9 @@ public class ChatEvent implements Listener {
     public void chat(AsyncPlayerChatEvent e) {
 
         if(!e.getPlayer().hasPermission("openhg.admin")) {
-            e.setFormat(e.getPlayer().getName() + Main.chatformat + "$7" + e.getMessage());
+            e.setFormat(e.getPlayer().getName() + " " + Main.chatformat + " §7" + e.getMessage());
         }else{
-            e.setFormat(e.getPlayer().getName() + Main.chatformat + "$f" + e.getMessage());
+            e.setFormat(e.getPlayer().getName() + " " + Main.chatformat + " §f" + e.getMessage());
         }
 
 

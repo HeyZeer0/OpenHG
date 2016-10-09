@@ -23,6 +23,7 @@ public class ScoreboardManager {
         a.blankLine();
         a.add(ChatColor.GREEN +  "Kit " + ChatColor.GRAY + KitManager.getKit(p));
         a.blankLine();
+        a.add(ChatColor.GRAY + "   " + Main.site);
 
         a.build();
         a.send(p);

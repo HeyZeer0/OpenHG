@@ -1,9 +1,12 @@
 package net.heyzeer0.openhg;
 
 import com.sun.webkit.plugin.PluginManager;
+import net.heyzeer0.openhg.api.KitManager;
 import net.heyzeer0.openhg.api.eventos.OpenHGStartEvent;
+import net.heyzeer0.openhg.api.example.ApiExample;
 import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.eventos.*;
+import net.heyzeer0.openhg.gui.KitSelector;
 import net.heyzeer0.openhg.manager.ScoreboardManager;
 import net.heyzeer0.openhg.timer.PreJogo;
 import net.heyzeer0.openhg.utils.GeneralUtil;
@@ -32,10 +35,11 @@ public class Main extends JavaPlugin {
     public static int min_players = 5;
 
     //strings
-    public static String prefixo = ChatColor.DARK_GRAY + "( " + ChatColor.GREEN + " ! " + ChatColor.DARK_GRAY + " ) " + ChatColor.GRAY;
+    public static String prefixo = ChatColor.DARK_GRAY + "(" + ChatColor.GREEN + " ! " + ChatColor.DARK_GRAY + ") " + ChatColor.GRAY;
     public static String prefix_nome = "" + ChatColor.GREEN + ChatColor.BOLD + "Open" + ChatColor.GRAY + ChatColor.BOLD + "HG";
     public static String ip = "hg.openhg.com.br";
-    public static String chatformat = "$6$l>";
+    public static String chatformat = "§6§l>";
+    public static String site  = "www.openhg.com.br";
 
     //plugin
     private static Main main;
@@ -66,6 +70,8 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ItemEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EntityEvent(), this);
         Bukkit.getPluginManager().registerEvents(new ChatEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new ApiExample(), this);
+        Bukkit.getPluginManager().registerEvents(new KitSelector(), this);
     }
 
     public static Main getPlugin() {

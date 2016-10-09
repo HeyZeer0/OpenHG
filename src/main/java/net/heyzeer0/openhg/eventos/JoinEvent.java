@@ -19,6 +19,8 @@ public class JoinEvent implements Listener {
 
     @EventHandler
     public void joinEvent(PlayerJoinEvent e) {
+        e.setJoinMessage(null);
+
         if(Main.estagio_atual == Estagio.PREJOGO || Main.estagio_atual == Estagio.AGUARDANDO) {
             PlayerManager.addPlayer(e.getPlayer());
             ItemUtil.giveJoinItems(e.getPlayer());
@@ -47,6 +49,8 @@ public class JoinEvent implements Listener {
 
     @EventHandler
     public void quitEvent(PlayerQuitEvent e) {
+        e.setQuitMessage(null);
+
         if(Main.estagio_atual == Estagio.PREJOGO || Main.estagio_atual == Estagio.AGUARDANDO) {
             PlayerManager.removePlayer(e.getPlayer());
             return;

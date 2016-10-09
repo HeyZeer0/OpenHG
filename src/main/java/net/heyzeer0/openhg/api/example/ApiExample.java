@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,7 +18,7 @@ import java.util.Arrays;
 /**
  * Created by HeyZeer0 on 09/10/2016.
  */
-public class ApiExample {
+public class ApiExample implements Listener {
 
     //how to add a kit
     @EventHandler
