@@ -50,4 +50,10 @@ public class KitManager {
         }
     }
 
+    public static void addKit(String kit, ItemStack[] items) {
+        if(!kititems.containsKey(kit)) {
+            kititems.put(kit, items);
+        }
+    }
+
 }

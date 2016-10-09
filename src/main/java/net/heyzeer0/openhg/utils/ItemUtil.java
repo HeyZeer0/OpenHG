@@ -33,6 +33,16 @@ public class ItemUtil {
         return is;
     }
 
+    public static ItemStack customItem(Material mat, String displayname, List<String> lore, Integer amount) {
+        ItemStack is = new ItemStack(mat);
+        ItemMeta im = is.getItemMeta();
+        im.setDisplayName(displayname);
+        im.setLore(lore);
+        is.setItemMeta(im);
+        is.setAmount(amount);
+        return is;
+    }
+
     public static void giveJoinItems(Player p) {
         p.getInventory().clear();
         p.getInventory().setArmorContents(null);
