@@ -2,15 +2,13 @@ package net.heyzeer0.openhg;
 
 import com.sun.webkit.plugin.PluginManager;
 import net.heyzeer0.openhg.enums.Estagio;
-import net.heyzeer0.openhg.eventos.EntityEvent;
-import net.heyzeer0.openhg.eventos.InteractEvent;
-import net.heyzeer0.openhg.eventos.ItemEvent;
-import net.heyzeer0.openhg.eventos.JoinEvent;
+import net.heyzeer0.openhg.eventos.*;
 import net.heyzeer0.openhg.manager.ScoreboardManager;
 import net.heyzeer0.openhg.timer.PreJogo;
 import net.heyzeer0.openhg.utils.GeneralUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.WorldBorder;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Score;
 
@@ -35,13 +33,10 @@ public class Main extends JavaPlugin {
     public static String prefixo = ChatColor.DARK_GRAY + "( " + ChatColor.GREEN + " ! " + ChatColor.DARK_GRAY + " )" + ChatColor.GRAY;
     public static String prefix_nome = "" + ChatColor.GREEN + ChatColor.BOLD + "Open" + ChatColor.GRAY + ChatColor.BOLD + "HG";
     public static String ip = "hg.openhg.com.br";
+    public static String chatformat = "$6$l>";
 
     //plugin
     private static Main main;
-
-    //q se dane vou remover no iniciar msm .-.
-
-    //agr foi aehuaueh
 
     public void onEnable() {
         main = this;
@@ -51,6 +46,10 @@ public class Main extends JavaPlugin {
         Bukkit.getLogger().info(" ");
         PreJogo.startCountdown();
         registerEvents();
+
+        WorldBorder b = Bukkit.getWorld("world").getWorldBorder();
+        b.setSize(1000);
+        b.setCenter(0, 0);
     }
 
     public void onDisable() {
@@ -62,6 +61,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new InteractEvent(), this);
         Bukkit.getPluginManager().registerEvents(new ItemEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EntityEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new ChatEvent(), this);
     }
 
     public static Main getPlugin() {

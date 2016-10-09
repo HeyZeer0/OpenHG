@@ -18,6 +18,10 @@ public class ScoreboardManager {
         a.add("   " + ChatColor.GRAY + Main.ip);
         a.blankLine();
         a.add(ChatColor.GREEN +  "Iniciando em " + ChatColor.GRAY + StringUtil.relogio(Main.countdown_prejogo));
+        a.add(ChatColor.GREEN +  "Jogadores " + ChatColor.GRAY + PlayerManager.playerCount());
+        a.blankLine();
+        a.add(ChatColor.GREEN +  "Kit " + ChatColor.GRAY + "Nenhum");
+        a.blankLine();
 
         a.build();
         a.send(p);

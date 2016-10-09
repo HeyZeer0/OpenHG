@@ -1,6 +1,8 @@
 package net.heyzeer0.openhg.utils;
 
 import net.heyzeer0.openhg.Main;
+import org.bukkit.Location;
+import org.bukkit.World;
 
 import java.io.File;
 
@@ -31,6 +33,10 @@ public class GeneralUtil {
                 a.delete();
             }
         }
+    }
+
+    public static Location toLocation(World w, float x, float y, float z) {
+        return new Location(w, x, y, z);
     }
 
 }

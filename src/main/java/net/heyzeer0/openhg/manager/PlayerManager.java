@@ -1,6 +1,9 @@
 package net.heyzeer0.openhg.manager;
 
+import net.heyzeer0.openhg.api.PlayerEnterTournamentEvent;
+import net.heyzeer0.openhg.api.PlayerLeaveTournamentEvent;
 import net.heyzeer0.openhg.utils.StringUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -18,10 +21,12 @@ public class PlayerManager {
             return;
         }
         jogadores.add(p.getUniqueId());
+        Bukkit.getPluginManager().callEvent(new PlayerEnterTournamentEvent(p));
     }
 
     public static void removePlayer(Player p) {
         jogadores.remove(p.getUniqueId());
+        Bukkit.getPluginManager().callEvent(new PlayerLeaveTournamentEvent(p));
     }
 
     public static void removePlayer(UUID uuid) {

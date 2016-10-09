@@ -2,6 +2,7 @@ package net.heyzeer0.openhg.timer;
 
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.manager.GameManager;
 import net.heyzeer0.openhg.manager.PlayerManager;
 import net.heyzeer0.openhg.manager.ScoreboardManager;
 import net.heyzeer0.openhg.utils.StringUtil;
@@ -44,6 +45,8 @@ public class PreJogo {
                     }
                     if(Main.countdown_prejogo == 10) {
                         StringUtil.broadcastMessage("O torneio ira iniciar em 10 segundos.");
+                        //Ativar lentidão
+                        GameManager.prestart();
                     }
                     if(Main.countdown_prejogo == 5) {
                         StringUtil.broadcastMessage("O torneio ira iniciar em 5 segundos.");
@@ -59,7 +62,10 @@ public class PreJogo {
                     }
                     if(Main.countdown_prejogo == 1) {
                         StringUtil.broadcastMessage("O torneio ira iniciar em 1 segundos.");
-                        //iniciar jogo
+                    }
+                    if(Main.countdown_prejogo == 0) {
+                        GameManager.startgame();
+                        this.cancel();
                     }
 
                 }
