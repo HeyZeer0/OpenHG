@@ -2,6 +2,7 @@ package net.heyzeer0.openhg;
 
 import com.sun.webkit.plugin.PluginManager;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.eventos.EntityEvent;
 import net.heyzeer0.openhg.eventos.InteractEvent;
 import net.heyzeer0.openhg.eventos.ItemEvent;
 import net.heyzeer0.openhg.eventos.JoinEvent;
@@ -60,6 +61,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinEvent(), this);
         Bukkit.getPluginManager().registerEvents(new InteractEvent(), this);
         Bukkit.getPluginManager().registerEvents(new ItemEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityEvent(), this);
     }
 
     public static Main getPlugin() {
