@@ -78,6 +78,9 @@ public class KitManager {
     }
 
     public static void addKit(String kit, ItemStack[] items) {
+        if(Main.loaded == true) {
+            throw new IllegalStateException("You can only add kits on OpenHGStartEvent.");
+        }
         if(!kititems.containsKey(kit)) {
             kititems.put(kit, items);
         }

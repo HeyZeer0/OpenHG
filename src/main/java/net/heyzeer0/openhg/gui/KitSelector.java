@@ -22,6 +22,19 @@ import java.util.HashMap;
  */
 public class KitSelector implements Listener {
 
+    public static HashMap<Integer, HashMap<String, ItemStack[]>> valores = new HashMap<>();
+
+    public static void registerKits() {
+        Integer kits = 0;
+
+        for(String a : KitManager.kititems.keySet()) {
+            HashMap<String, ItemStack[]> pc = new HashMap<>();
+            pc.put(a, KitManager.kititems.get(a));
+            valores.put(kits, pc);
+            kits++;
+        }
+    }
+
     public static void openKitSelector(Player p, Integer pagina) {
         Inventory i = Bukkit.createInventory(null, 54, "Kit Selector " + pagina);
 
@@ -38,19 +51,7 @@ public class KitSelector implements Listener {
         i.setItem(6,ItemUtil.customItem(Material.STAINED_GLASS_PANE, "", null, (short)7));
         i.setItem(7,ItemUtil.customItem(Material.STAINED_GLASS_PANE, "", null, (short)7));
 
-
-        HashMap<Integer, HashMap<String, ItemStack[]>> valores = new HashMap<>();
-        Integer kits = 0;
-
-        for(String a : KitManager.kititems.keySet()) {
-            HashMap<String, ItemStack[]> pc = new HashMap<>();
-            pc.put(a, KitManager.kititems.get(a));
-            valores.put(kits, pc);
-
-            kits++;
-        }
-
-        if(kits > 45 * pagina) {
+        if(KitManager.kititems.size() > 45 * pagina) {
             i.addItem(ItemUtil.customItem(Material.CARPET, "§7Proxima página", null, (short)5));
         }else{
             i.addItem(ItemUtil.customItem(Material.CARPET, "§7Proxima página", null, (short)7));

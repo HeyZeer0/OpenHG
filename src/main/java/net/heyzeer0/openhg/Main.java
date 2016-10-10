@@ -44,6 +44,9 @@ public class Main extends JavaPlugin {
     //plugin
     private static Main main;
 
+    //booleans
+    public static boolean loaded = false;
+
     public void onEnable() {
         main = this;
         Bukkit.getLogger().info(" ");
@@ -58,6 +61,8 @@ public class Main extends JavaPlugin {
         b.setCenter(0, 0);
 
         Bukkit.getPluginManager().callEvent(new OpenHGStartEvent());
+        loaded = true;
+        KitSelector.registerKits();
     }
 
     public void onDisable() {
@@ -70,8 +75,9 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ItemEvent(), this);
         Bukkit.getPluginManager().registerEvents(new EntityEvent(), this);
         Bukkit.getPluginManager().registerEvents(new ChatEvent(), this);
-        Bukkit.getPluginManager().registerEvents(new ApiExample(), this);
         Bukkit.getPluginManager().registerEvents(new KitSelector(), this);
+
+        Bukkit.getPluginManager().registerEvents(new ApiExample(), this);
     }
 
     public static Main getPlugin() {
