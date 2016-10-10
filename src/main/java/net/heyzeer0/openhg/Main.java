@@ -77,7 +77,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ChatEvent(), this);
         Bukkit.getPluginManager().registerEvents(new KitSelector(), this);
 
-        Bukkit.getPluginManager().registerEvents(new ApiExample(), this);
+        //Bukkit.getPluginManager().registerEvents(new ApiExample(), this);
     }
 
     public static Main getPlugin() {
