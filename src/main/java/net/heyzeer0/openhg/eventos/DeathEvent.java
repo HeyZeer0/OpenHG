@@ -52,7 +52,7 @@ public class DeathEvent implements Listener {
     @EventHandler
     public static void kill(PlayerDeathEvent e) {
         if(Main.estagio_atual == Estagio.EMJOGO || Main.estagio_atual == Estagio.INVECIBILIDADE) {
-            if(Main.countdown_jogo <= 300 && e.getEntity().hasPermission("openhg.respawnn")) {
+            if(Main.countdown_jogo <= 300 && e.getEntity().hasPermission("openhg.respawn")) {
                 //renascer
                 e.setDeathMessage(null);
                 return;
