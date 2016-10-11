@@ -3,6 +3,7 @@ package net.heyzeer0.openhg.api.example;
 import net.heyzeer0.openhg.api.KitManager;
 import net.heyzeer0.openhg.api.eventos.*;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.enums.QuitCause;
 import net.heyzeer0.openhg.utils.GeneralUtil;
 import net.heyzeer0.openhg.utils.ItemUtil;
 import net.heyzeer0.openhg.utils.StringUtil;
@@ -69,6 +70,10 @@ public class ApiExample implements Listener {
     //player leave the tournament
     @EventHandler
     public void PlayerEnter(PlayerLeaveTournamentEvent e) {
+        if(e.getQuitCause() == QuitCause.COMBAT) {
+            StringUtil.broadcastMessage("The player " + e.getPlayer().getName() + " quit in combat!");
+            return;
+        }
         StringUtil.broadcastMessage("The player " + e.getPlayer().getName() + " leaved the tournament!");
     }
 
