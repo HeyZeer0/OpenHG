@@ -2,6 +2,8 @@ package net.heyzeer0.openhg.manager;
 
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.api.KitManager;
+import net.heyzeer0.openhg.api.eventos.PlayerLeaveTournamentEvent;
+import net.heyzeer0.openhg.enums.QuitCause;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -87,6 +89,8 @@ public class CombatLogManager {
 
             KitManager.removeKit(p);
             PlayerManager.removePlayer(p.getUniqueId());
+            Bukkit.getPluginManager().callEvent(new PlayerLeaveTournamentEvent(p, QuitCause.COMBAT));
+            PlayerManager.deathPlayer(p);
 
             Bukkit.broadcastMessage("§7" + "§c" + PlayerManager.playerCount() + " jogadores restantes.");
             Bukkit.broadcastMessage("§7" + "§e" + p.getName() + " saiu do torneio.");

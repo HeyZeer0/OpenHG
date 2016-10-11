@@ -26,11 +26,11 @@ public class PlayerManager {
         }
         jogadores.add(p.getUniqueId());
         Bukkit.getPluginManager().callEvent(new PlayerEnterTournamentEvent(p));
+        jogadores_mortos.remove(p.getUniqueId());
     }
 
     public static void removePlayer(Player p) {
         jogadores.remove(p.getUniqueId());
-        Bukkit.getPluginManager().callEvent(new PlayerLeaveTournamentEvent(p));
     }
 
     public static void removePlayer(UUID uuid) {
@@ -44,6 +44,29 @@ public class PlayerManager {
     public static Integer playerCount() {
         return jogadores.size();
     }
+
+
+    private static ArrayList<UUID> jogadores_mortos = new ArrayList<UUID>();
+
+    public static void deathPlayer(Player p) {
+        if(jogadores_mortos.contains(p.getUniqueId())) {
+            return;
+        }
+        jogadores_mortos.add(p.getUniqueId());
+    }
+
+    public static void deathPlayer(UUID u) {
+        if(jogadores_mortos.contains(u)) {
+            return;
+        }
+        jogadores_mortos.add(u);
+    }
+
+    public static boolean isDeath(Player p) {
+        return jogadores_mortos.contains(p.getUniqueId());
+    }
+
+
 
 
 }

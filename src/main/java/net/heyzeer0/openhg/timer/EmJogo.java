@@ -2,6 +2,7 @@ package net.heyzeer0.openhg.timer;
 
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.manager.PlayerManager;
 import net.heyzeer0.openhg.manager.ScoreboardManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,7 +22,9 @@ public class EmJogo {
                     ScoreboardManager.setScoreboard_emjogo(p);
                 }
 
-                if(Main.estagio_atual == Estagio.VITORIA) {
+                if(PlayerManager.playerCount() == 1) {
+                    Main.estagio_atual = Estagio.VITORIA;
+
                     return;
                 }
 

@@ -52,6 +52,10 @@ public class KitManager {
         kits.remove(p.getUniqueId());
     }
 
+    public static void removeKit(UUID p) {
+        kits.remove(p);
+    }
+
     public static void giveKitItems() {
         for(UUID u : kits.keySet()) {
             Bukkit.getPlayer(u).getInventory().clear();

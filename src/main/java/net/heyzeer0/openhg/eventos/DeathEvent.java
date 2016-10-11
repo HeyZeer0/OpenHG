@@ -2,10 +2,13 @@ package net.heyzeer0.openhg.eventos;
 
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.api.KitManager;
+import net.heyzeer0.openhg.api.eventos.PlayerLeaveTournamentEvent;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.enums.QuitCause;
 import net.heyzeer0.openhg.manager.CombatLogManager;
 import net.heyzeer0.openhg.manager.KillManager;
 import net.heyzeer0.openhg.manager.PlayerManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Monster;
@@ -24,6 +27,9 @@ public class DeathEvent implements Listener {
 
     public static void death(Player p) {
         PlayerManager.removePlayer(p);
+        Bukkit.getPluginManager().callEvent(new PlayerLeaveTournamentEvent(p, QuitCause.DEATH));
+
+        PlayerManager.deathPlayer(p);
 
         if(p.hasPermission("openhg.admin")) {
             p.setHealth(20);
