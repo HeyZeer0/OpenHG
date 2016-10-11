@@ -3,7 +3,10 @@ package net.heyzeer0.openhg.timer;
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.enums.Estagio;
 import net.heyzeer0.openhg.manager.GameManager;
+import net.heyzeer0.openhg.manager.ScoreboardManager;
 import net.heyzeer0.openhg.utils.StringUtil;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
@@ -15,6 +18,10 @@ public class Invencibilidade {
         new BukkitRunnable() {
             public void run() {
                 Main.countdown_invencibilidade-= 1;
+
+                for(Player p : Bukkit.getWorld("world").getPlayers()) {
+                    ScoreboardManager.setScoreboard_invencibilidadae(p);
+                }
 
                 if(Main.countdown_invencibilidade == 120) {
                     StringUtil.broadcastMessage("A invencibilidade ira acabar em 2 minutos.");

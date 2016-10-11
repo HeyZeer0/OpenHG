@@ -29,4 +29,40 @@ public class ScoreboardManager {
         a.send(p);
     }
 
+    public static void setScoreboard_invencibilidadae(Player p) {
+
+        ScoreboardUtil a = new ScoreboardUtil(Main.prefix_nome);
+
+        a.add("   " + ChatColor.GRAY + Main.ip);
+        a.blankLine();
+        a.add(ChatColor.GREEN +  "Invencibilidade " + ChatColor.GRAY + StringUtil.relogio(Main.countdown_invencibilidade));
+        a.add(ChatColor.GREEN +  "Jogadores " + ChatColor.GRAY + PlayerManager.playerCount());
+        a.blankLine();
+        a.add(ChatColor.GREEN +  "Kit " + ChatColor.GRAY + KitManager.getKit(p));
+        a.add(ChatColor.GREEN +  "Kills " + ChatColor.GRAY + KillManager.getKills(p));
+        a.blankLine();
+        a.add(ChatColor.GRAY + "   " + Main.site);
+
+        a.build();
+        a.send(p);
+    }
+
+    public static void setScoreboard_emjogo(Player p) {
+
+        ScoreboardUtil a = new ScoreboardUtil(Main.prefix_nome);
+
+        a.add("   " + ChatColor.GRAY + Main.ip);
+        a.blankLine();
+        a.add(ChatColor.GREEN +  "Tempo " + ChatColor.GRAY + StringUtil.relogio(Main.countdown_jogo));
+        a.add(ChatColor.GREEN +  "Jogadores " + ChatColor.GRAY + PlayerManager.playerCount());
+        a.blankLine();
+        a.add(ChatColor.GREEN +  "Kit " + ChatColor.GRAY + KitManager.getKit(p));
+        a.add(ChatColor.GREEN +  "Kills " + ChatColor.GRAY + KillManager.getKills(p));
+        a.blankLine();
+        a.add(ChatColor.GRAY + "   " + Main.site);
+
+        a.build();
+        a.send(p);
+    }
+
 }

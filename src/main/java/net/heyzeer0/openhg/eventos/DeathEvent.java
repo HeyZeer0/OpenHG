@@ -3,6 +3,8 @@ package net.heyzeer0.openhg.eventos;
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.api.KitManager;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.manager.CombatLogManager;
+import net.heyzeer0.openhg.manager.KillManager;
 import net.heyzeer0.openhg.manager.PlayerManager;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;
@@ -28,7 +30,9 @@ public class DeathEvent implements Listener {
 
             new BukkitRunnable() {
                 public void run() {
-                    //put in adminn
+                    //put in admin
+                    CombatLogManager.invalidate(p);
+
                 }
             }.runTaskLater(Main.getPlugin(), 2);
 
@@ -40,6 +44,8 @@ public class DeathEvent implements Listener {
             new BukkitRunnable() {
                 public void run() {
                     //put in spec
+                    CombatLogManager.invalidate(p);
+
                 }
             }.runTaskLater(Main.getPlugin(), 2);
 
@@ -47,6 +53,7 @@ public class DeathEvent implements Listener {
         }
 
         p.kickPlayer("§cVocê morreu, tente novamente em outra partida.");
+        CombatLogManager.invalidate(p);
     }
 
     @EventHandler
@@ -55,6 +62,7 @@ public class DeathEvent implements Listener {
             if(Main.countdown_jogo <= 300 && e.getEntity().hasPermission("openhg.respawn")) {
                 //renascer
                 e.setDeathMessage(null);
+                CombatLogManager.invalidate(e.getEntity());
                 return;
             }
 
@@ -67,6 +75,14 @@ public class DeathEvent implements Listener {
 
             if(damager != null) {
                 if(damager instanceof Monster) {
+
+                    if(CombatLogManager.combat.containsKey(e.getEntity().getUniqueId())) {
+                        if(PlayerManager.isPlayer(e.getEntity())) {
+                            KillManager.addKill(CombatLogManager.combat.get(e.getEntity().getUniqueId()), 1);
+
+                        }
+                    }
+
                     e.setDeathMessage("§b" + e.getEntity().getName() + "(" + KitManager.getKit(e.getEntity()) + ") morreu para um monstro."
                             + "\n§C" + (PlayerManager.playerCount() - 1) + " jogadores restantes" +
                             "\n§e" + e.getEntity().getName() + "saiu do torneio.");
@@ -74,6 +90,14 @@ public class DeathEvent implements Listener {
                     return;
                 }
                 if(damager instanceof Animals) {
+
+                    if(CombatLogManager.combat.containsKey(e.getEntity().getUniqueId())) {
+                        if(PlayerManager.isPlayer(e.getEntity())) {
+                            KillManager.addKill(CombatLogManager.combat.get(e.getEntity().getUniqueId()), 1);
+
+                        }
+                    }
+
                     e.setDeathMessage("§b" + e.getEntity().getName() + "(" + KitManager.getKit(e.getEntity()) + ") morreu para um animal."
                             + "\n§C" + (PlayerManager.playerCount() - 1) + " jogadores restantes" +
                             "\n§e" + e.getEntity().getName() + "saiu do torneio.");
@@ -88,12 +112,20 @@ public class DeathEvent implements Listener {
                         + "\n§C" + (PlayerManager.playerCount() - 1) + " jogadores restantes" +
                         "\n§e" + e.getEntity().getName() + "saiu do torneio.");
                         death(e.getEntity());
+
+                        KillManager.addKill(((Player)e.getEntity().getKiller()), 1);
                         return;
                     }
                 }
             }
 
             //add combatlog kill
+            if(CombatLogManager.combat.containsKey(e.getEntity().getUniqueId())) {
+                if(PlayerManager.isPlayer(e.getEntity())) {
+                    KillManager.addKill(CombatLogManager.combat.get(e.getEntity().getUniqueId()), 1);
+
+                }
+            }
 
             if(e.getDeathMessage().contains("was shot by")) {
                 e.setDeathMessage("§b" + e.getEntity().getName() + "(" + KitManager.getKit(e.getEntity()) + ") levou uma flechada e morreu."

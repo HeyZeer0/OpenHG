@@ -16,6 +16,10 @@ public class PlayerManager {
 
     private static ArrayList<UUID> jogadores = new ArrayList<UUID>();
 
+    public static boolean isPlayer(Player p) {
+        return jogadores.contains(p.getUniqueId());
+    }
+
     public static void addPlayer(Player p) {
         if(jogadores.contains(p.getUniqueId())) {
             return;

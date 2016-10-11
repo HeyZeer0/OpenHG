@@ -2,6 +2,8 @@ package net.heyzeer0.openhg.api.example;
 
 import net.heyzeer0.openhg.api.KitManager;
 import net.heyzeer0.openhg.api.eventos.*;
+import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.utils.GeneralUtil;
 import net.heyzeer0.openhg.utils.ItemUtil;
 import net.heyzeer0.openhg.utils.StringUtil;
 import org.bukkit.ChatColor;
@@ -31,7 +33,7 @@ public class ApiExample implements Listener {
     public void onPlayerFished(PlayerFishEvent event)
     {
         Player player = event.getPlayer();
-        if (KitManager.getKit(player).equalsIgnoreCase("fisherman")) {
+        if (KitManager.getKit(player).equalsIgnoreCase("fisherman") && GeneralUtil.getEstagio() == Estagio.EMJOGO) {
             if ((event.getCaught() instanceof Player))
             {
                 Player caught = (Player)event.getCaught();

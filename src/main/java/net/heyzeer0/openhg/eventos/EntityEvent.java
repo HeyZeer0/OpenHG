@@ -2,10 +2,12 @@ package net.heyzeer0.openhg.eventos;
 
 import net.heyzeer0.openhg.Main;
 import net.heyzeer0.openhg.enums.Estagio;
+import net.heyzeer0.openhg.manager.CombatLogManager;
 import net.heyzeer0.openhg.manager.DamageManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -41,5 +43,19 @@ public class EntityEvent implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void damage_combatlog(EntityDamageByEntityEvent e) {
+        if(Main.estagio_atual == Estagio.EMJOGO) {
+            if(e.getEntity() instanceof Player) {
+                if(e.getDamager() instanceof Player) {
+
+                    CombatLogManager.updateCombat((Player)e.getEntity(), (Player)e.getDamager());
+
+                }
+            }
+        }
+    }
+
 
 }
